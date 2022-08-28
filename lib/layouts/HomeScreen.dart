@@ -21,21 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   SqlDb myDb = SqlDb();
   int currentIndex = 0;
   var scaffoldKey = GlobalKey<ScaffoldState>();
-  bool isFloatingPressed = false;
   IconData floatingIcon = Icons.edit;
-
-  var textFormKey = GlobalKey<FormState>();
-
-
-
-  Future<List<Map>> writeDataMethod ()
-  async  {
-    Future<List<Map>> responce= myDb.insertData(tableName: "TASKS", title: "title", date: "date", time: "time", status: "status");
-    return responce;
-
-  }
-
-  // late Future<List<Map<String, Object?>>> homeTasks;
 
   List<Widget> Screens = [
     NewTaskScreen(),
@@ -45,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   initState() {
+    setState(() {});
     super.initState();
   }
 
@@ -78,24 +65,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Screens[currentIndex],
-
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           setState(() {});
-
           Navigator.of(context).pushNamed("AddTaskRoute");
-
-
-
         },
         child: Icon(floatingIcon),
       ),
-
-
-
-
-
-
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 30,
         selectedLabelStyle: const TextStyle(fontSize: 22),
