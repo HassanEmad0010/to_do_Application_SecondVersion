@@ -14,24 +14,25 @@ class SqlDb {
   }
 
   initialDatabase() async {
+    print("initialDatabase_______________________");
+
     String databaseName = 'LocalDataBase';
     String path = await getDatabasesPath();
     DatabasePath = path;
     String databasePath = join(path, databaseName);
 
-    var mydb = await openDatabase(
+    Database mydb = await openDatabase(
       databasePath,
-      version: 5,
-      onCreate: _oncreateMethode,
-      //onUpgrade: _onUpgradeMethode,
+      version: 1,
+      onCreate: await _oncreateMethode,
+      onUpgrade: _onUpgradeMethode,
     );
-    print("DB created");
 
     return mydb;
   }
 
   _oncreateMethode(Database db, int version) async {
-    print("___________on Create");
+    print("_oncreateMethode_______________________");
 
     // Batch().execute(sql)
     //TITLE,DATA,TIME,STATUS
@@ -42,18 +43,15 @@ class SqlDb {
     await db.execute(
         "CREATE TABLE DraftTASKS (id INTEGER PRIMARY KEY, TITLE TEXT, DATE TEXT, TIME STRING, STATUS STRING)");
   }
-/*
-  _onUpgradeMethode( Database database, int oldVersion, int newVersion)
-  async {
-    print("___________on upgrade");
 
-    await database.execute("CREATE TABLE DraftTASKS (id INTEGER PRIMARY KEY, TITLE TEXT, DATE TEXT, TIME STRING, STATUS STRING)");
-
-
-  }*/
+  _onUpgradeMethode(Database database, int oldVersion, int newVersion) async {
+    print("_onUpgradeMethode_______________________");
+    await database.execute(
+        "CREATE TABLE DraftTASKS (id INTEGER PRIMARY KEY, TITLE TEXT, DATE TEXT, TIME STRING, STATUS STRING)");
+  }
 
   Future<List<Map>> readData({required String sqlCommand}) async {
-    print("trying to read data");
+    print("readData by sql command $sqlCommand ______________________");
     Database? myDb = await db;
     Future<List<Map<String, Object?>>> responce = myDb!.rawQuery(sqlCommand);
     return responce;
@@ -66,10 +64,10 @@ class SqlDb {
     required time,
     required status,
   }) async {
-    print("trying to insert data");
-
     String sqlCommand =
         'INSERT INTO $tableName(TITLE,DATE,TIME,STATUS) VALUES("$title", "$date", "$time","$status")';
+    print("insertData by sql command $sqlCommand ______________________");
+
     Database? mydb = await db;
     var response = await mydb!.rawQuery(sqlCommand);
     return response;
@@ -77,8 +75,8 @@ class SqlDb {
 
   Future<int> DeleteData(
       {required String rowData, required String tableName}) async {
-    print("trying to Delete data");
-
+    String sqlCommand = 'DELETE FROM $tableName WHERE TITLE = "$rowData"';
+    print("DeleteData $sqlCommand ______________________");
     Database? mydb = await db;
     int responce = await mydb!
         .rawDelete('DELETE FROM $tableName WHERE TITLE = "$rowData"');
@@ -86,8 +84,7 @@ class SqlDb {
   }
 
   Future<int> DeleteTableData({required String tableName}) async {
-    print("trying to Delete data");
-
+    print("DeleteTableData $tableName ______________________");
     Database? mydb = await db;
     int responce = await mydb!.rawDelete('DELETE FROM "$tableName"');
     return responce;

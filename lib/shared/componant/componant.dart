@@ -27,7 +27,6 @@ Widget textFormField({
           prefix: Icon(iconPrefix),
           suffix: IconButton(onPressed: suffixFunction, icon: Icon(iconSuffix)),
           labelText: formFieldText,
-
           //floatingLabelAlignment: FloatingLabelAlignment.center,
         ),
         controller: textEditingController,
@@ -50,7 +49,7 @@ Widget cardBuilder({
     decoration: BoxDecoration(
       // shape: BoxShape.circle,
       border: Border.all(color: Colors.black, width: 4),
-      borderRadius: BorderRadius.all(
+      borderRadius: const BorderRadius.all(
         Radius.circular(14.0),
       ),
       color: color,

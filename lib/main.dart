@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_do_application/modules/NewTaskScreen.dart';
 
 import 'layouts/HomeScreen.dart';
+import 'modules/AddTaskScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       //darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
+      routes: {"AddTaskRoute":(context)=>AddTaskScreen() },
     );
   }
 }
