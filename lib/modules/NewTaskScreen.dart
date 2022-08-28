@@ -72,7 +72,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                             snapDate: newTasksList[index]['DATE'],
                             snapStatus: newTasksList[index]['STATUS'],
                             snapTime: newTasksList[index]['TIME'],
-                            longPressFunction: () async {
+                            PressFunction: () async {
                               print("long pressed");
                               print("snap" + newTasksList.toString());
 
@@ -95,7 +95,11 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                                 });
                                 newTasksList.removeWhere((element) =>element['id']==newTasksList[index]['id'] );
                               }
-                            });
+                            }, longPressFunction: () {
+                              print("long pressed");
+
+
+                        });
                       }
                       ),
 

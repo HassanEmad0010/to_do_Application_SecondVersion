@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   SqlDb myDb = SqlDb();
   int currentIndex = 0;
   var scaffoldKey = GlobalKey<ScaffoldState>();
-  IconData floatingIcon = Icons.edit;
+  IconData floatingIcon = Icons.add;
 
   List<Widget> Screens = [
     NewTaskScreen(),
@@ -66,11 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Screens[currentIndex],
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueAccent,
         onPressed: () async {
           setState(() {});
           Navigator.of(context).pushNamed("AddTaskRoute");
         },
         child: Icon(floatingIcon),
+
       ),
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 30,

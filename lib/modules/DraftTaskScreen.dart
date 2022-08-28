@@ -64,7 +64,7 @@ class _DraftTaskScreenState extends State<DraftTaskScreen> {
                             snapDate: draftTasksList[index]['DATE'],
                             snapStatus: draftTasksList[index]['STATUS'],
                             snapTime: draftTasksList[index]['TIME'],
-                            longPressFunction: () async {
+                            PressFunction: () async {
                               print("long pressed");
                               print("snap" + draftTasksList.toString());
 
@@ -87,9 +87,9 @@ class _DraftTaskScreenState extends State<DraftTaskScreen> {
                                     element['id'] ==
                                     draftTasksList[index]['id']);
                               }
-                            });
+                            }, longPressFunction: () {  });
                       }),
-                  Container(
+               /*   Container(
                     child: IconButton(
                       iconSize: 50,
                       icon: Icon(Icons.local_see),
@@ -99,7 +99,7 @@ class _DraftTaskScreenState extends State<DraftTaskScreen> {
                         // print( "data from draftTasksList ${draftTasksList[7]['TITLE']}");
                       },
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),

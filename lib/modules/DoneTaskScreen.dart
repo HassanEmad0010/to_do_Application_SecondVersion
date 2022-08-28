@@ -65,7 +65,7 @@ class _DoneTaskScreenState extends State<DoneTaskScreen> {
                       snapDate: doneTasksList[index]['DATE'],
                       snapStatus: doneTasksList[index]['STATUS'],
                       snapTime: doneTasksList[index]['TIME'],
-                      longPressFunction: () async {
+                      PressFunction: () async {
                         print("long pressed");
                         print("snap" + doneTasksList.toString());
 
@@ -88,11 +88,11 @@ class _DoneTaskScreenState extends State<DoneTaskScreen> {
                           });
                           doneTasksList.removeWhere((element) =>element['id']==doneTasksList[index]['id'] );
                         }
-                      });
+                      }, longPressFunction: () {  });
                 }
             ),
 
-            Container(
+         /*   Container(
               child:
               IconButton(
                 iconSize: 50,
@@ -109,7 +109,7 @@ class _DoneTaskScreenState extends State<DoneTaskScreen> {
 
 
             ),
-
+*/
 
           ],
         ),
