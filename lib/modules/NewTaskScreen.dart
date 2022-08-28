@@ -50,8 +50,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       backgroundColor: Colors.teal,
       key: newTaskScaffoldKey,
       body:
-      isLoading?
-          const Center(child: Text("Loading now.......")):
+      isLoading? const Center(child: CircularProgressIndicator(value: 30,color: Colors.white,)):
       Container(
         margin: EdgeInsets.all(24),
         //width: double.infinity,
@@ -100,7 +99,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                       }
                       ),
 
-            Container(
+/*            Container(
               child:
               IconButton(
                 iconSize: 50,
@@ -116,7 +115,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
 
 
 
-            ),
+            ),*/
 
 
           ],

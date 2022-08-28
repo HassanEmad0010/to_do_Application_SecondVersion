@@ -74,7 +74,7 @@ class _DoneTaskScreenState extends State<DoneTaskScreen> {
                           title: doneTasksList[index]['TITLE'],
                           date: doneTasksList[index]['DATE'],
                           time: doneTasksList[index]['TIME'],
-                          status: "Done",
+                          status: "Draft",
                         );
 
                         int resp = await dbObject.DeleteData(
